@@ -1,95 +1,162 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+"use client";
+
+import { useState, useEffect } from "react";
+import { AnimatePresence } from "framer-motion";
+import LoadingScreen from "@/components/LoadingScreen";
+import IntroSequence from "@/components/Intro";
+import Navbar from "@/components/Navbar";
+import EnhancedOrientationSection from "@/components/chap1/OrientationSection";
+import EventSection from "@/components/chap1/EventSection";
+import { useSimpleScroll } from "@/hooks/use-hook-scroll";
+import MovingStars from "@/components/MovingStars";
+import WelcomeSound from "@/components/WelcomeSound";
 
 export default function Home() {
-  return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>app/page.js</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const [isLoading, setIsLoading] = useState(true);
+  const [showIntro, setShowIntro] = useState(false);
+  const [showMain, setShowMain] = useState(false);
+  const [playWelcomeSound, setPlayWelcomeSound] = useState(false);
+  const [currentSection, setCurrentSection] = useState(0);
+  const { containerRef } = useSimpleScroll(setCurrentSection);
 
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+      setShowIntro(true);
+    }, 6000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  const handleIntroComplete = () => {
+    setShowIntro(false);
+    setShowMain(true);
+    setPlayWelcomeSound(true);
+  };
+
+  const sections = [
+    {
+      id: "orientation",
+      title: "The Book Begins",
+      subtitle: "Orientation - Where Magic Starts",
+      color: "orange",
+    },
+    {
+      id: "event1",
+      title: "First Enchantment",
+      subtitle: "Community Outreach Event",
+      color: "blue",
+    },
+    {
+      id: "event2",
+      title: "Second Spell",
+      subtitle: "Cultural Workshop",
+      color: "emerald",
+    },
+  ];
+
+  return (
+    <div className="relative bg-black min-h-screen">
+      <MovingStars />
+      <WelcomeSound shouldPlay={playWelcomeSound} />
+
+      <AnimatePresence mode="wait">
+        {isLoading && <LoadingScreen key="loading" />}
+        {showIntro && (
+          <IntroSequence key="intro" onComplete={handleIntroComplete} />
+        )}
+      </AnimatePresence>
+
+      {showMain && (
+        <>
+          <Navbar currentSection={currentSection} sections={sections} />
+          <div
+            ref={containerRef}
+            className="h-screen overflow-y-auto scrollbar-hide"
+            style={{ scrollBehavior: "smooth" }}
           >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+            <section id="orientation" className="min-h-screen w-full">
+              <EnhancedOrientationSection />
+            </section>
+
+            <section id="event1" className="min-h-screen w-full">
+              <EventSection
+                eventName="Community Outreach Program"
+                eventDate="July 15, 2025"
+                responsibilities={{
+                  pre: [
+                    "Prepared promotional materials",
+                    "Coordinated with team members",
+                    "Set up registration system",
+                  ],
+                  during: [
+                    "Captured event photographs",
+                    "Assisted participants",
+                    "Managed registration desk",
+                  ],
+                  post: [
+                    "Compiled event report",
+                    "Organized photos",
+                    "Created feedback summary",
+                  ],
+                }}
+                description="A community outreach program aimed at connecting local residents with cultural activities and educational resources. The event brought together diverse community members to celebrate Pakistani-American heritage."
+                learnings={[
+                  "Event management skills",
+                  "Cross-cultural communication",
+                  "Photography techniques",
+                  "Team coordination",
+                ]}
+                images={[
+                  "/placeholder.svg?height=300&width=400",
+                  "/placeholder.svg?height=300&width=400",
+                  "/placeholder.svg?height=300&width=400",
+                  "/placeholder.svg?height=300&width=400",
+                ]}
+                sectionColor="blue"
+              />
+            </section>
+
+            <section id="event2" className="min-h-screen w-full">
+              <EventSection
+                eventName="Cultural Heritage Workshop"
+                eventDate="July 28, 2025"
+                responsibilities={{
+                  pre: [
+                    "Researched cultural topics",
+                    "Prepared presentation materials",
+                    "Arranged venue setup",
+                  ],
+                  during: [
+                    "Facilitated workshop sessions",
+                    "Documented activities",
+                    "Engaged with participants",
+                  ],
+                  post: [
+                    "Created workshop summary",
+                    "Processed feedback forms",
+                    "Planned follow-up activities",
+                  ],
+                }}
+                description="An interactive workshop focused on Pakistani cultural heritage, featuring traditional arts, crafts, and storytelling sessions. Participants learned about historical traditions and contemporary cultural practices."
+                learnings={[
+                  "Workshop facilitation",
+                  "Cultural research methods",
+                  "Public speaking",
+                  "Documentation skills",
+                ]}
+                images={[
+                  "/placeholder.svg?height=300&width=400",
+                  "/placeholder.svg?height=300&width=400",
+                  "/placeholder.svg?height=300&width=400",
+                  "/placeholder.svg?height=300&width=400",
+                ]}
+                sectionColor="emerald"
+              />
+            </section>
+          </div>
+        </>
+      )}
     </div>
   );
 }

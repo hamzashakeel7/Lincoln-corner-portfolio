@@ -1,0 +1,333 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { useInView } from "framer-motion";
+import { useRef, useState } from "react";
+import Image from "next/image";
+
+// Define color values as CSS variables
+const colorStyles = {
+  blue: {
+    "--primary": "#3b82f6", // blue-500
+    "--secondary": "#60a5fa", // blue-400
+    "--light": "#93c5fd", // blue-300
+    "--bg": "rgba(59, 130, 246, 0.2)", // blue-500/20
+    "--gradient-from": "rgba(37, 99, 235, 0.2)", // blue-600/20
+    "--gradient-to": "rgba(6, 182, 212, 0.2)", // cyan-600/20
+    "--950": "rgba(23, 37, 84, 0.2)", // blue-950/20
+  },
+  emerald: {
+    "--primary": "#10b981", // emerald-500
+    "--secondary": "#34d399", // emerald-400
+    "--light": "#6ee7b7", // emerald-300
+    "--bg": "rgba(16, 185, 129, 0.2)",
+    "--gradient-from": "rgba(5, 150, 105, 0.2)",
+    "--gradient-to": "rgba(20, 184, 166, 0.2)",
+    "--950": "rgba(2, 44, 34, 0.2)",
+  },
+  purple: {
+    "--primary": "#8b5cf6", // purple-500
+    "--secondary": "#a78bfa", // purple-400
+    "--light": "#c4b5fd", // purple-300
+    "--bg": "rgba(139, 92, 246, 0.2)",
+    "--gradient-from": "rgba(124, 58, 237, 0.2)",
+    "--gradient-to": "rgba(236, 72, 153, 0.2)",
+    "--950": "rgba(46, 16, 101, 0.2)",
+  },
+  amber: {
+    "--primary": "#f59e0b", // amber-500
+    "--secondary": "#fbbf24", // amber-400
+    "--light": "#fcd34d", // amber-300
+    "--bg": "rgba(245, 158, 11, 0.2)",
+    "--gradient-from": "rgba(217, 119, 6, 0.2)",
+    "--gradient-to": "rgba(251, 146, 60, 0.2)",
+    "--950": "rgba(69, 26, 3, 0.2)",
+  },
+  yellow: {
+    "--primary": "#eab308", // yellow-500
+    "--secondary": "#facc15", // yellow-400
+    "--light": "#fde047", // yellow-300
+    "--bg": "rgba(234, 179, 8, 0.2)",
+    "--gradient-from": "rgba(202, 138, 4, 0.2)",
+    "--gradient-to": "rgba(245, 158, 11, 0.2)",
+    "--950": "rgba(66, 32, 6, 0.2)",
+  },
+};
+
+export default function EventSection({
+  eventName,
+  eventDate,
+  responsibilities,
+  description,
+  learnings,
+  images,
+  sectionColor = "blue", // default color
+}) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: false, amount: 0.3 });
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  // Get the color styles for the current sectionColor
+  const currentColors = colorStyles[sectionColor] || colorStyles.blue;
+
+  return (
+    <section
+      ref={ref}
+      style={currentColors}
+      className="min-h-screen w-full bg-gradient-to-br from-black via-[color:var(--950)] to-black flex items-center justify-center snap-start relative overflow-hidden py-20"
+    >
+      {/* Background magical effects */}
+      <div className="absolute inset-0">
+        {/* Gradient overlays */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[color:var(--primary)]/10 via-transparent to-[color:var(--secondary)]/10" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[color:var(--primary)]/5 to-transparent" />
+
+        {/* Enhanced floating particles */}
+        {[...Array(40)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute rounded-full"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              width: Math.random() * 6 + 2,
+              height: Math.random() * 6 + 2,
+              background: `linear-gradient(45deg, var(--primary), var(--secondary))`,
+            }}
+            animate={{
+              opacity: [0, 1, 0],
+              scale: [0, 1, 0],
+              rotate: [0, 360],
+              y: [0, -150, 0],
+              x: [0, Math.random() * 100 - 50, 0],
+            }}
+            transition={{
+              duration: 8 + Math.random() * 4,
+              repeat: Number.POSITIVE_INFINITY,
+              delay: Math.random() * 6,
+            }}
+          />
+        ))}
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8  relative z-10">
+        {/* Event Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+          transition={{ duration: 1 }}
+          className="text-center mb-12 mt-20"
+        >
+          <motion.h1
+            className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-[color:var(--primary)] via-[color:var(--secondary)] to-[color:var(--light)] bg-clip-text text-transparent mb-4 font-serif"
+            animate={{
+              backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+            }}
+            transition={{ duration: 4, repeat: Number.POSITIVE_INFINITY }}
+            style={{ backgroundSize: "200% 200%" }}
+          >
+            ✨ {eventName} ✨
+          </motion.h1>
+          <motion.p
+            className="text-[color:var(--light)] text-xl font-sans"
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+            transition={{ delay: 0.3 }}
+          >
+            {eventDate}
+          </motion.p>
+        </motion.div>
+
+        <div className="grid lg:grid-cols-2 gap-12">
+          {/* Left Column */}
+          <div className="space-y-8">
+            {/* Responsibilities */}
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
+              transition={{ duration: 1, delay: 0.2 }}
+              className="bg-gradient-to-r from-[color:var(--gradient-from)] to-[color:var(--gradient-to)] backdrop-blur-sm border border-[color:var(--primary)]/30 rounded-2xl p-6"
+            >
+              <h3 className="text-2xl font-bold text-[color:var(--primary)] mb-6 font-serif flex items-center">
+                🎯 Your Magical Responsibilities
+              </h3>
+
+              <div className="space-y-4">
+                {["pre", "during", "post"].map((phase, index) => (
+                  <motion.div
+                    key={phase}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={
+                      isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
+                    }
+                    transition={{ delay: 0.4 + index * 0.2 }}
+                    className="bg-black/30 border border-[color:var(--secondary)]/20 rounded-lg p-4"
+                  >
+                    <h4 className="text-[color:var(--secondary)] font-bold mb-2 font-serif capitalize">
+                      {phase === "pre"
+                        ? "🔮 Pre-Event"
+                        : phase === "during"
+                        ? "⚡ During Event"
+                        : "📜 Post-Event"}
+                    </h4>
+                    <ul className="text-[color:var(--light)] space-y-1">
+                      {responsibilities[phase].map((item, i) => (
+                        <motion.li
+                          key={i}
+                          initial={{ opacity: 0, x: -20 }}
+                          animate={
+                            isInView
+                              ? { opacity: 1, x: 0 }
+                              : { opacity: 0, x: -20 }
+                          }
+                          transition={{ delay: 0.6 + index * 0.2 + i * 0.1 }}
+                          className="flex items-center font-sans"
+                        >
+                          <span className="text-[color:var(--secondary)] mr-2">
+                            •
+                          </span>
+                          {item}
+                        </motion.li>
+                      ))}
+                    </ul>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* Description */}
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
+              transition={{ duration: 1, delay: 0.6 }}
+              className="bg-gradient-to-r from-[color:var(--gradient-from)] to-[color:var(--gradient-to)] backdrop-blur-sm border border-[color:var(--primary)]/30 rounded-2xl p-6"
+            >
+              <h3 className="text-2xl font-bold text-[color:var(--primary)] mb-4 font-serif flex items-center">
+                📖 The Story Unfolds
+              </h3>
+              <motion.p
+                className="text-[color:var(--light)] leading-relaxed font-sans text-lg"
+                initial={{ opacity: 0 }}
+                animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+                transition={{ delay: 0.8 }}
+              >
+                {description}
+              </motion.p>
+            </motion.div>
+          </div>
+
+          {/* Right Column */}
+          <div className="space-y-8">
+            {/* Learnings */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
+              transition={{ duration: 1, delay: 0.4 }}
+              className="bg-gradient-to-l from-[color:var(--gradient-from)] to-[color:var(--gradient-to)] backdrop-blur-sm border border-[color:var(--primary)]/30 rounded-2xl p-6"
+            >
+              <h3 className="text-2xl font-bold text-[color:var(--primary)] mb-6 font-serif flex items-center">
+                🧙‍♂️ Magical Learnings
+              </h3>
+              <div className="grid grid-cols-2 gap-4">
+                {learnings.map((learning, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={
+                      isInView
+                        ? { opacity: 1, scale: 1 }
+                        : { opacity: 0, scale: 0.8 }
+                    }
+                    transition={{ delay: 0.6 + index * 0.1 }}
+                    className="bg-black/40 border border-[color:var(--secondary)]/20 rounded-lg p-3 text-center"
+                    whileHover={{
+                      scale: 1.05,
+                      borderColor: "var(--secondary)",
+                    }}
+                  >
+                    <span className="text-[color:var(--light)] font-sans text-sm">
+                      {learning}
+                    </span>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* Images */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
+              transition={{ duration: 1, delay: 0.8 }}
+              className="bg-gradient-to-l from-[color:var(--gradient-from)] to-[color:var(--gradient-to)] backdrop-blur-sm border border-[color:var(--primary)]/30 rounded-2xl p-6"
+            >
+              <h3 className="text-2xl font-bold text-[color:var(--primary)] mb-6 font-serif flex items-center">
+                📸 Captured Memories
+              </h3>
+              <div className="grid grid-cols-2 gap-4">
+                {images.map((image, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={
+                      isInView
+                        ? { opacity: 1, scale: 1 }
+                        : { opacity: 0, scale: 0.8 }
+                    }
+                    transition={{ delay: 1 + index * 0.1 }}
+                    className="relative aspect-square rounded-lg overflow-hidden border-2 border-[color:var(--secondary)]/30 cursor-pointer"
+                    whileHover={{
+                      scale: 1.05,
+                      borderColor: "var(--secondary)",
+                    }}
+                    onClick={() => setSelectedImage(image)}
+                  >
+                    <Image
+                      src={image || "/placeholder.svg"}
+                      alt={`Event memory ${index + 1}`}
+                      fill
+                      className="object-cover"
+                    />
+                    <motion.div className="absolute inset-0 bg-[color:var(--primary)]/20 opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                      <span className="text-white font-bold">View</span>
+                    </motion.div>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </div>
+
+      {/* Image Modal */}
+      {selectedImage && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+          onClick={() => setSelectedImage(null)}
+        >
+          <motion.div
+            initial={{ scale: 0.8 }}
+            animate={{ scale: 1 }}
+            exit={{ scale: 0.8 }}
+            className="relative max-w-4xl max-h-[80vh] w-full h-full"
+          >
+            <Image
+              src={selectedImage || "/placeholder.svg"}
+              alt="Enlarged memory"
+              fill
+              className="object-contain rounded-lg"
+            />
+            <button
+              onClick={() => setSelectedImage(null)}
+              className="absolute top-4 right-4 bg-[color:var(--primary)] text-black px-4 py-2 rounded-lg font-bold"
+            >
+              ✕
+            </button>
+          </motion.div>
+        </motion.div>
+      )}
+    </section>
+  );
+}
