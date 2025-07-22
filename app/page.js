@@ -10,6 +10,7 @@ import EventSection from "@/components/chap1/EventSection";
 import { useSimpleScroll } from "@/hooks/use-hook-scroll";
 import MovingStars from "@/components/MovingStars";
 import WelcomeSound from "@/components/WelcomeSound";
+import LandingPage from "@/components/LandingPage";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
@@ -18,15 +19,21 @@ export default function Home() {
   const [playWelcomeSound, setPlayWelcomeSound] = useState(false);
   const [currentSection, setCurrentSection] = useState(0);
   const { containerRef } = useSimpleScroll(setCurrentSection);
+  const [showLanding, setShowLanding] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
-      setShowIntro(true);
+      setShowLanding(true);
     }, 6000);
 
     return () => clearTimeout(timer);
   }, []);
+
+  const handleViewWork = () => {
+    setShowLanding(false);
+    setShowIntro(true);
+  };
 
   const handleIntroComplete = () => {
     setShowIntro(false);
@@ -37,19 +44,19 @@ export default function Home() {
   const sections = [
     {
       id: "orientation",
-      title: "The Book Begins",
+      title: "The Journey Begins",
       subtitle: "Orientation - Where Magic Starts",
       color: "orange",
     },
     {
       id: "event1",
-      title: "First Enchantment",
+      title: "Building Bridges",
       subtitle: "Community Outreach Event",
       color: "blue",
     },
     {
       id: "event2",
-      title: "Second Spell",
+      title: "Creative Expressions",
       subtitle: "Cultural Workshop",
       color: "emerald",
     },
@@ -62,6 +69,9 @@ export default function Home() {
 
       <AnimatePresence mode="wait">
         {isLoading && <LoadingScreen key="loading" />}
+        {showLanding && (
+          <LandingPage key="landing" onViewWork={handleViewWork} />
+        )}
         {showIntro && (
           <IntroSequence key="intro" onComplete={handleIntroComplete} />
         )}

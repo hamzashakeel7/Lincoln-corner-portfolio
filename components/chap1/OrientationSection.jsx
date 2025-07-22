@@ -11,16 +11,14 @@ export default function EnhancedOrientationSection() {
   const [selectedImage, setSelectedImage] = useState(null);
 
   const orientationImages = [
-    "/placeholder.svg?height=300&width=400",
-    "/placeholder.svg?height=300&width=400",
-    "/placeholder.svg?height=300&width=400",
-    "/placeholder.svg?height=300&width=400",
+    "/chap1/1.1-hamza.jpg",
+    "/chap1/1.1-hamza2.jpg",
+    "/chap1/1.1-hamza3.jpg",
+    "/chap1/1.1-hamza4.jpg",
   ];
 
   const stats = [
     { number: "6", label: "Months Journey", icon: "📅" },
-    { number: "25+", label: "Events Planned", icon: "🎯" },
-    { number: "500+", label: "People Impacted", icon: "👥" },
     { number: "100%", label: "Dedication", icon: "💫" },
   ];
 
@@ -48,7 +46,7 @@ export default function EnhancedOrientationSection() {
             transition={{ duration: 5, repeat: Number.POSITIVE_INFINITY }}
             style={{ backgroundSize: "200% 200%" }}
           >
-            The Book Begins
+            The Journery Begins
           </motion.h1>
 
           <motion.div
@@ -60,14 +58,19 @@ export default function EnhancedOrientationSection() {
             className="bg-gradient-to-r from-orange-500/20 via-amber-500/20 to-orange-500/20 backdrop-blur-sm border border-orange-500/30 rounded-2xl p-8 mb-8 shadow-2xl"
           >
             <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-orange-300 to-amber-300 bg-clip-text text-transparent mb-6 font-serif">
-              ✨ Orientation - Where Magic Starts ✨
+              ✨ Orientation - Where Magic Started ✨
             </h2>
             <p className="text-gray-300 text-lg md:text-xl leading-relaxed font-sans max-w-4xl mx-auto">
-              You stepped into the halls of PACC (Pakistan American Cultural
-              Center), where your magical journey of learning, growth, and
-              cultural exchange began. Like a young wizard entering Hogwarts for
-              the first time, you were filled with wonder and anticipation for
-              the adventures ahead. This is where dreams transform into reality.
+              The orientation marked the beginning of a new chapter — filled
+              with excitement, curiosity, and a strong sense of purpose. It was
+              more than just an introduction; it was a warm welcome into a
+              dynamic environment where learning, growth, and collaboration are
+              at the heart of everything. From meeting inspiring mentors to
+              getting a glimpse of what lies ahead, the day set the tone for
+              what’s to come. I felt genuinely motivated seeing the passion in
+              the team, the clarity in the vision, and the energy of everyone
+              around. It was the kind of environment that makes you want to do
+              your best — not out of pressure, but out of pride.
             </p>
           </motion.div>
         </motion.div>
@@ -77,7 +80,7 @@ export default function EnhancedOrientationSection() {
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
           transition={{ duration: 1, delay: 0.8 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12"
+          className="grid grid-cols-2 md:grid-cols-3 gap-6 mb-12"
         >
           {stats.map((stat, index) => (
             <motion.div
@@ -114,13 +117,15 @@ export default function EnhancedOrientationSection() {
               whileHover={{ scale: 1.02, borderColor: "#f97316" }}
             >
               <h3 className="text-3xl font-bold bg-gradient-to-r from-orange-400 to-amber-400 bg-clip-text text-transparent mb-6 font-serif flex items-center">
-                🏛️ The Magical Institution
+                🏛️ The American Institution
               </h3>
               <p className="text-gray-300 font-sans text-lg leading-relaxed">
-                Lincoln Corner Pakistan American Cultural Center - A bridge
-                between cultures, fostering understanding and collaboration
-                between Pakistani and American communities. Here, magic happens
-                through cultural exchange.
+                Lincoln Corners are partnerships between the Embassy of the
+                United States of America and selected institutions in Pakistan.
+                Located within universities, public libraries, and cultural
+                centers, Lincoln Corners are multi-media resource centers, where
+                visitors can connect, practice their English, and learn about
+                America in many different ways.
               </p>
             </motion.div>
 
@@ -129,11 +134,11 @@ export default function EnhancedOrientationSection() {
               whileHover={{ scale: 1.02, borderColor: "#f59e0b" }}
             >
               <h3 className="text-3xl font-bold bg-gradient-to-r from-amber-400 to-orange-400 bg-clip-text text-transparent mb-6 font-serif flex items-center">
-                📅 The Enchanted Timeline
+                📅 The Timeline
               </h3>
               <div className="text-gray-300 font-sans text-lg space-y-2">
                 <p className="font-semibold">June - November 2025</p>
-                <p>6 Months of Magical Learning</p>
+                <p>6 Months of Krazy🔥 Learning</p>
                 <p className="text-orange-400 font-bold">
                   Chapter I: July - The Journey Begins
                 </p>
@@ -207,7 +212,7 @@ export default function EnhancedOrientationSection() {
             transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY }}
             className="text-orange-400 text-2xl font-sans"
           >
-            ↓ Scroll to continue your magical journey ↓
+            ↓ Scroll to continue your Krazy journey ↓
           </motion.div>
         </motion.div>
       </div>

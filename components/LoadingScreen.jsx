@@ -73,7 +73,7 @@ export default function LoadingScreen() {
             }}
             transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
           >
-            ✨ Magical Portfolio ✨
+            ✨ Durrani's Portfolio ✨
           </motion.h1>
           <motion.p
             initial={{ opacity: 0 }}
@@ -81,7 +81,7 @@ export default function LoadingScreen() {
             transition={{ delay: 1, duration: 1 }}
             className="text-orange-300 text-lg md:text-xl font-serif"
           >
-            Use a bigger screen for the best magical experience
+            Use a bigger screen for better experience
           </motion.p>
           <motion.div
             className="mt-6 flex justify-center space-x-2"
