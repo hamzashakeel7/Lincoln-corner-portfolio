@@ -91,37 +91,30 @@ export default function Home() {
 
             <section id="event1" className="min-h-screen w-full">
               <EventSection
-                eventName="Community Outreach Program"
-                eventDate="July 15, 2025"
+                eventName="CCC Session - EducationUSA"
+                eventDate="July 1-3, 2025"
                 responsibilities={{
                   pre: [
-                    "Prepared promotional materials",
-                    "Coordinated with team members",
-                    "Set up registration system",
+                    "Printed event attendance sheets",
+                    "Connected multi media, arranged seating",
                   ],
                   during: [
                     "Captured event photographs",
-                    "Assisted participants",
-                    "Managed registration desk",
+                    "Captured event videos",
                   ],
-                  post: [
-                    "Compiled event report",
-                    "Organized photos",
-                    "Created feedback summary",
-                  ],
+                  post: ["Compiled event report", "Organized photos"],
                 }}
-                description="A community outreach program aimed at connecting local residents with cultural activities and educational resources. The event brought together diverse community members to celebrate Pakistani-American heritage."
+                description="A bootcamp session organized by EducationUSA, focusing on college and career counseling. The event included workshops, guest speakers, and interactive sessions to guide students in their educational journeys."
                 learnings={[
                   "Event management skills",
                   "Cross-cultural communication",
                   "Photography techniques",
-                  "Team coordination",
                 ]}
                 images={[
-                  "/placeholder.svg?height=300&width=400",
-                  "/placeholder.svg?height=300&width=400",
-                  "/placeholder.svg?height=300&width=400",
-                  "/placeholder.svg?height=300&width=400",
+                  "/chap1/event2/1.jpg",
+                  "/chap1/event2/2.jpg",
+                  "/chap1/event2/3.jpg",
+                  "/chap1/event2/4.jpg",
                 ]}
                 sectionColor="blue"
               />
@@ -129,31 +122,28 @@ export default function Home() {
 
             <section id="event2" className="min-h-screen w-full">
               <EventSection
-                eventName="Cultural Heritage Workshop"
-                eventDate="July 28, 2025"
+                eventName="How to make a Business Plan"
+                eventDate="July 9, 2025"
                 responsibilities={{
                   pre: [
-                    "Researched cultural topics",
-                    "Prepared presentation materials",
-                    "Arranged venue setup",
+                    "Whatsaap Group for event",
+                    "Attendance management",
+                    "Multimedia setup for the workshop",
                   ],
                   during: [
-                    "Facilitated workshop sessions",
-                    "Documented activities",
-                    "Engaged with participants",
+                    "Captured event photographs",
+                    "Captured event videos",
                   ],
                   post: [
                     "Created workshop summary",
-                    "Processed feedback forms",
-                    "Planned follow-up activities",
+                    "Sovigners to the participants and speaker",
                   ],
                 }}
-                description="An interactive workshop focused on Pakistani cultural heritage, featuring traditional arts, crafts, and storytelling sessions. Participants learned about historical traditions and contemporary cultural practices."
+                description="A workshop focused on teaching participants how to create effective business plans. The session included expert speakers, interactive discussions, and practical exercises to help attendees develop their own business strategies."
                 learnings={[
                   "Workshop facilitation",
-                  "Cultural research methods",
+                  "Business planning skills",
                   "Public speaking",
-                  "Documentation skills",
                 ]}
                 images={[
                   "/placeholder.svg?height=300&width=400",
@@ -162,6 +152,140 @@ export default function Home() {
                   "/placeholder.svg?height=300&width=400",
                 ]}
                 sectionColor="emerald"
+              />
+            </section>
+
+            <section id="event3" className="min-h-screen w-full">
+              <EventSection
+                eventName="– Build Your Digital Identity as a journalist "
+                eventDate="July 11, 2025"
+                responsibilities={{
+                  pre: [
+                    "Attendance management",
+                    "Multimedia setup for the workshop",
+                  ],
+                  during: [
+                    "Captured event photographs",
+                    "Captured event videos",
+                  ],
+                  post: ["Sovigners to the participants and speaker"],
+                }}
+                description="An interactive workshop designed to help journalists build and enhance their digital presence. The session covered topics such as social media strategies, personal branding, and online storytelling techniques."
+                learnings={[
+                  "Workshop facilitation",
+                  "Digital identity skills",
+                  "Networking with professionals",
+                ]}
+                images={[
+                  "/chap1/event3/1.jpg",
+                  "/chap1/event3/2.jpg",
+                  "/chap1/event3/3.jpg",
+                  "/chap1/event3/4.jpg",
+                ]}
+                sectionColor="purple"
+              />
+            </section>
+
+            <section id="event4" className="min-h-screen w-full">
+              <EventSection
+                eventName="Mastering E-Commerce"
+                eventDate="July 18, 2025"
+                responsibilities={{
+                  pre: [
+                    "Attendance management",
+                    "Multimedia setup for the workshop",
+                  ],
+                  during: [
+                    "Captured event photographs",
+                    "Captured event videos",
+                  ],
+                  post: ["Sovigners to the participants and speaker"],
+                }}
+                description="A workshop focused on mastering e-commerce strategies and platforms. Participants learned about online business models, digital marketing, and effective e-commerce management techniques."
+                learnings={[
+                  "Workshop facilitation",
+                  "Learned e-commerce strategies",
+                  "Ecommerce platform management",
+                  "Networking with professionals",
+                ]}
+                images={[
+                  "/chap1/event4/1.jpg",
+                  "/chap1/event4/2.jpg",
+                  "/chap1/event4/3.jpg",
+                  "/chap1/event4/4.jpg",
+                ]}
+                sectionColor="rose"
+              />
+            </section>
+
+            <section id="event5" className="min-h-screen w-full">
+              <EventSection
+                eventName="Summer Maker Camp"
+                eventDate="July 21-25, 2025"
+                responsibilities={{
+                  pre: [
+                    "Attendance management",
+                    "Multimedia setup for the workshop",
+                    "Created WhatsApp group for participants",
+                    "Cold Calling participants to confirm attendance",
+                    "Made souvenirs for participants and speakers",
+                    "Seating arrangements",
+                  ],
+                  during: [
+                    "Captured event photographs",
+                    "Captured event videos",
+                    "Guided participants through activities",
+                    "Made sure all participants were engaged",
+                  ],
+                  post: [
+                    "Souvenirs to the participants and speaker",
+                    "Organized photos",
+                    "reel edit ideas",
+                  ],
+                }}
+                description="A week-long maker camp designed to inspire creativity and innovation among participants. The camp included hands-on LinkedIn workshops, collaborative projects, and guest speakers from various fields on improving social media presence."
+                learnings={[
+                  "LinkedIn profile optimization",
+                  "Social media presence",
+                  "Difference between Cv and Resume",
+                  "Networking",
+                  "Team collaboration",
+                  "Event management",
+                ]}
+                images={[
+                  "/chap1/event5/1.jpg",
+                  "/chap1/event5/2.jpg",
+                  "/chap1/event5/3.jpg",
+                  "/chap1/event5/4.jpg",
+                ]}
+                sectionColor="indigo"
+              />
+            </section>
+
+            <section id="event6" className="min-h-screen w-full">
+              <EventSection
+                eventName="Youth Council Meeting"
+                eventDate="July 23, 2025"
+                responsibilities={{
+                  pre: ["Attendance management", "Multimedia setup"],
+                  during: [
+                    "Captured meeting photographs",
+                    "Captured meeting videos",
+                  ],
+                  post: [
+                    "Networking with meeting attendees",
+                    "Organized photos",
+                  ],
+                }}
+                description="An American Consulate meeting aimed at discussing youth-related issues and initiatives. The meeting included presentations, group discussions, and networking opportunities."
+                learnings={["Learned communication with diplomats"]}
+                images={[
+                  "/chap1/event6/1.jpg",
+                  "/chap1/event6/2.jpg",
+                  "/chap1/event6/3.jpg",
+                  "/chap1/event6/4.jpg",
+                ]}
+                sectionColor="lime"
               />
             </section>
           </div>

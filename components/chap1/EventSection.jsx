@@ -52,6 +52,70 @@ const colorStyles = {
     "--gradient-to": "rgba(245, 158, 11, 0.2)",
     "--950": "rgba(66, 32, 6, 0.2)",
   },
+
+  rose: {
+    "--primary": "#f43f5e", // rose-500
+    "--secondary": "#fb7185", // rose-400
+    "--light": "#fda4af", // rose-300
+    "--bg": "rgba(244, 63, 94, 0.2)",
+    "--gradient-from": "rgba(225, 29, 72, 0.2)",
+    "--gradient-to": "rgba(244, 114, 182, 0.2)",
+    "--950": "rgba(76, 5, 25, 0.2)",
+  },
+  cyan: {
+    "--primary": "#06b6d4", // cyan-500
+    "--secondary": "#22d3ee", // cyan-400
+    "--light": "#67e8f9", // cyan-300
+    "--bg": "rgba(6, 182, 212, 0.2)",
+    "--gradient-from": "rgba(8, 145, 178, 0.2)",
+    "--gradient-to": "rgba(34, 211, 238, 0.2)",
+    "--950": "rgba(21, 94, 117, 0.2)",
+  },
+  fuchsia: {
+    "--primary": "#d946ef", // fuchsia-500
+    "--secondary": "#e879f9", // fuchsia-400
+    "--light": "#f0abfc", // fuchsia-300
+    "--bg": "rgba(217, 70, 239, 0.2)",
+    "--gradient-from": "rgba(192, 38, 211, 0.2)",
+    "--gradient-to": "rgba(232, 121, 249, 0.2)",
+    "--950": "rgba(74, 4, 78, 0.2)",
+  },
+  teal: {
+    "--primary": "#14b8a6", // teal-500
+    "--secondary": "#2dd4bf", // teal-400
+    "--light": "#5eead4", // teal-300
+    "--bg": "rgba(20, 184, 166, 0.2)",
+    "--gradient-from": "rgba(13, 148, 136, 0.2)",
+    "--gradient-to": "rgba(45, 212, 191, 0.2)",
+    "--950": "rgba(19, 78, 74, 0.2)",
+  },
+  pink: {
+    "--primary": "#ec4899", // pink-500
+    "--secondary": "#f472b6", // pink-400
+    "--light": "#f9a8d4", // pink-300
+    "--bg": "rgba(236, 72, 153, 0.2)",
+    "--gradient-from": "rgba(219, 39, 119, 0.2)",
+    "--gradient-to": "rgba(244, 114, 182, 0.2)",
+    "--950": "rgba(80, 7, 36, 0.2)",
+  },
+  indigo: {
+    "--primary": "#6366f1", // indigo-500
+    "--secondary": "#818cf8", // indigo-400
+    "--light": "#a5b4fc", // indigo-300
+    "--bg": "rgba(99, 102, 241, 0.2)",
+    "--gradient-from": "rgba(79, 70, 229, 0.2)",
+    "--gradient-to": "rgba(129, 140, 248, 0.2)",
+    "--950": "rgba(30, 27, 75, 0.2)",
+  },
+  lime: {
+    "--primary": "#84cc16", // lime-500
+    "--secondary": "#a3e635", // lime-400
+    "--light": "#bef264", // lime-300
+    "--bg": "rgba(132, 204, 22, 0.2)",
+    "--gradient-from": "rgba(101, 163, 13, 0.2)",
+    "--gradient-to": "rgba(163, 230, 53, 0.2)",
+    "--950": "rgba(26, 46, 5, 0.2)",
+  },
 };
 
 export default function EventSection({
@@ -64,7 +128,7 @@ export default function EventSection({
   sectionColor = "blue", // default color
 }) {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: false, amount: 0.3 });
+  const isInView = useInView(ref, { once: true, amount: 0.3 });
   const [selectedImage, setSelectedImage] = useState(null);
 
   // Get the color styles for the current sectionColor
@@ -149,7 +213,7 @@ export default function EventSection({
               className="bg-gradient-to-r from-[color:var(--gradient-from)] to-[color:var(--gradient-to)] backdrop-blur-sm border border-[color:var(--primary)]/30 rounded-2xl p-6"
             >
               <h3 className="text-2xl font-bold text-[color:var(--primary)] mb-6 font-serif flex items-center">
-                🎯 Your Magical Responsibilities
+                🎯 Responsibilities
               </h3>
 
               <div className="space-y-4">
@@ -203,7 +267,7 @@ export default function EventSection({
               className="bg-gradient-to-r from-[color:var(--gradient-from)] to-[color:var(--gradient-to)] backdrop-blur-sm border border-[color:var(--primary)]/30 rounded-2xl p-6"
             >
               <h3 className="text-2xl font-bold text-[color:var(--primary)] mb-4 font-serif flex items-center">
-                📖 The Story Unfolds
+                📖 The Story
               </h3>
               <motion.p
                 className="text-[color:var(--light)] leading-relaxed font-sans text-lg"
@@ -226,7 +290,7 @@ export default function EventSection({
               className="bg-gradient-to-l from-[color:var(--gradient-from)] to-[color:var(--gradient-to)] backdrop-blur-sm border border-[color:var(--primary)]/30 rounded-2xl p-6"
             >
               <h3 className="text-2xl font-bold text-[color:var(--primary)] mb-6 font-serif flex items-center">
-                🧙‍♂️ Magical Learnings
+                🧙‍♂️ Learnings
               </h3>
               <div className="grid grid-cols-2 gap-4">
                 {learnings.map((learning, index) => (

@@ -7,7 +7,7 @@ import Image from "next/image";
 
 export default function EnhancedOrientationSection() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: false, amount: 0.3 });
+  const isInView = useInView(ref, { once: true, amount: 0.3 });
   const [selectedImage, setSelectedImage] = useState(null);
 
   const orientationImages = [
