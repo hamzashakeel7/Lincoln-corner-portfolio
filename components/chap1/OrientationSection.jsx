@@ -20,6 +20,7 @@ export default function EnhancedOrientationSection() {
   const stats = [
     { number: "6", label: "Months Journey", icon: "📅" },
     { number: "100%", label: "Dedication", icon: "💫" },
+    { number: "100%", label: "Steam Learning", icon: "🌿" },
   ];
 
   return (
@@ -61,16 +62,10 @@ export default function EnhancedOrientationSection() {
               ✨ Orientation - Where Magic Started ✨
             </h2>
             <p className="text-gray-300 text-lg md:text-xl leading-relaxed font-sans max-w-4xl mx-auto">
-              The orientation marked the beginning of a new chapter — filled
-              with excitement, curiosity, and a strong sense of purpose. It was
-              more than just an introduction; it was a warm welcome into a
-              dynamic environment where learning, growth, and collaboration are
-              at the heart of everything. From meeting inspiring mentors to
-              getting a glimpse of what lies ahead, the day set the tone for
-              what’s to come. I felt genuinely motivated seeing the passion in
-              the team, the clarity in the vision, and the energy of everyone
-              around. It was the kind of environment that makes you want to do
-              your best — not out of pressure, but out of pride.
+              The orientation felt like the perfect start — filled with warmth,
+              purpose, and inspiration. From meeting passionate mentors to
+              glimpsing the journey ahead, it set a positive tone. The energy
+              and clarity around me didn’t just welcome me — it motivated me.
             </p>
           </motion.div>
         </motion.div>
@@ -137,7 +132,7 @@ export default function EnhancedOrientationSection() {
                 📅 The Timeline
               </h3>
               <div className="text-gray-300 font-sans text-lg space-y-2">
-                <p className="font-semibold">June - November 2025</p>
+                <p className="font-semibold">July - December 2025</p>
                 <p>6 Months of Krazy🔥 Learning</p>
                 <p className="text-orange-400 font-bold">
                   Chapter I: July - The Journey Begins

@@ -118,6 +118,57 @@ const colorStyles = {
   },
 };
 
+// Animation variants for better performance
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      when: "beforeChildren",
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: "spring",
+      damping: 25,
+      stiffness: 100,
+    },
+  },
+};
+
+const slideInLeft = {
+  hidden: { opacity: 0, x: -50 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      type: "spring",
+      damping: 25,
+      stiffness: 100,
+    },
+  },
+};
+
+const slideInRight = {
+  hidden: { opacity: 0, x: 50 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      type: "spring",
+      damping: 25,
+      stiffness: 100,
+    },
+  },
+};
+
 export default function EventSection({
   eventName,
   eventDate,
@@ -125,10 +176,14 @@ export default function EventSection({
   description,
   learnings,
   images,
-  sectionColor = "blue", // default color
+  sectionColor = "blue",
 }) {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.3 });
+  const isInView = useInView(ref, {
+    once: true,
+    amount: 0.3,
+    margin: "100px 0px 100px 0px", // Add margin to trigger animation earlier
+  });
   const [selectedImage, setSelectedImage] = useState(null);
 
   // Get the color styles for the current sectionColor
@@ -146,8 +201,8 @@ export default function EventSection({
         <div className="absolute inset-0 bg-gradient-to-r from-[color:var(--primary)]/10 via-transparent to-[color:var(--secondary)]/10" />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[color:var(--primary)]/5 to-transparent" />
 
-        {/* Enhanced floating particles */}
-        {[...Array(40)].map((_, i) => (
+        {/* Enhanced floating particles - optimized */}
+        {[...Array(20)].map((_, i) => (
           <motion.div
             key={i}
             className="absolute rounded-full"
@@ -158,28 +213,30 @@ export default function EventSection({
               height: Math.random() * 6 + 2,
               background: `linear-gradient(45deg, var(--primary), var(--secondary))`,
             }}
+            initial={{ opacity: 0, scale: 0 }}
             animate={{
-              opacity: [0, 1, 0],
+              opacity: [0, 0.8, 0],
               scale: [0, 1, 0],
               rotate: [0, 360],
               y: [0, -150, 0],
               x: [0, Math.random() * 100 - 50, 0],
             }}
             transition={{
-              duration: 8 + Math.random() * 4,
+              duration: 10 + Math.random() * 10, // Longer duration for smoother motion
               repeat: Number.POSITIVE_INFINITY,
-              delay: Math.random() * 6,
+              delay: Math.random() * 10,
+              ease: "linear", // Linear easing for smoother continuous motion
             }}
           />
         ))}
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8  relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Event Header */}
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-          transition={{ duration: 1 }}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          variants={containerVariants}
           className="text-center mb-12 mt-20"
         >
           <motion.h1
@@ -187,16 +244,18 @@ export default function EventSection({
             animate={{
               backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
             }}
-            transition={{ duration: 4, repeat: Number.POSITIVE_INFINITY }}
+            transition={{
+              duration: 8,
+              repeat: Number.POSITIVE_INFINITY,
+              ease: "linear",
+            }}
             style={{ backgroundSize: "200% 200%" }}
           >
             ✨ {eventName} ✨
           </motion.h1>
           <motion.p
             className="text-[color:var(--light)] text-xl font-sans"
-            initial={{ opacity: 0 }}
-            animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-            transition={{ delay: 0.3 }}
+            variants={itemVariants}
           >
             {eventDate}
           </motion.p>
@@ -207,23 +266,21 @@ export default function EventSection({
           <div className="space-y-8">
             {/* Responsibilities */}
             <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
-              transition={{ duration: 1, delay: 0.2 }}
+              initial="hidden"
+              animate={isInView ? "visible" : "hidden"}
+              variants={slideInLeft}
+              transition={{ delay: 0.2 }}
               className="bg-gradient-to-r from-[color:var(--gradient-from)] to-[color:var(--gradient-to)] backdrop-blur-sm border border-[color:var(--primary)]/30 rounded-2xl p-6"
             >
               <h3 className="text-2xl font-bold text-[color:var(--primary)] mb-6 font-serif flex items-center">
                 🎯 Responsibilities
               </h3>
 
-              <div className="space-y-4">
+              <motion.div className="space-y-4" variants={containerVariants}>
                 {["pre", "during", "post"].map((phase, index) => (
                   <motion.div
                     key={phase}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={
-                      isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
-                    }
+                    variants={itemVariants}
                     transition={{ delay: 0.4 + index * 0.2 }}
                     className="bg-black/30 border border-[color:var(--secondary)]/20 rounded-lg p-4"
                   >
@@ -234,16 +291,14 @@ export default function EventSection({
                         ? "⚡ During Event"
                         : "📜 Post-Event"}
                     </h4>
-                    <ul className="text-[color:var(--light)] space-y-1">
+                    <motion.ul
+                      className="text-[color:var(--light)] space-y-1"
+                      variants={containerVariants}
+                    >
                       {responsibilities[phase].map((item, i) => (
                         <motion.li
                           key={i}
-                          initial={{ opacity: 0, x: -20 }}
-                          animate={
-                            isInView
-                              ? { opacity: 1, x: 0 }
-                              : { opacity: 0, x: -20 }
-                          }
+                          variants={itemVariants}
                           transition={{ delay: 0.6 + index * 0.2 + i * 0.1 }}
                           className="flex items-center font-sans"
                         >
@@ -253,17 +308,18 @@ export default function EventSection({
                           {item}
                         </motion.li>
                       ))}
-                    </ul>
+                    </motion.ul>
                   </motion.div>
                 ))}
-              </div>
+              </motion.div>
             </motion.div>
 
             {/* Description */}
             <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
-              transition={{ duration: 1, delay: 0.6 }}
+              initial="hidden"
+              animate={isInView ? "visible" : "hidden"}
+              variants={slideInLeft}
+              transition={{ delay: 0.6 }}
               className="bg-gradient-to-r from-[color:var(--gradient-from)] to-[color:var(--gradient-to)] backdrop-blur-sm border border-[color:var(--primary)]/30 rounded-2xl p-6"
             >
               <h3 className="text-2xl font-bold text-[color:var(--primary)] mb-4 font-serif flex items-center">
@@ -271,8 +327,7 @@ export default function EventSection({
               </h3>
               <motion.p
                 className="text-[color:var(--light)] leading-relaxed font-sans text-lg"
-                initial={{ opacity: 0 }}
-                animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+                variants={itemVariants}
                 transition={{ delay: 0.8 }}
               >
                 {description}
@@ -284,29 +339,29 @@ export default function EventSection({
           <div className="space-y-8">
             {/* Learnings */}
             <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
-              transition={{ duration: 1, delay: 0.4 }}
+              initial="hidden"
+              animate={isInView ? "visible" : "hidden"}
+              variants={slideInRight}
+              transition={{ delay: 0.4 }}
               className="bg-gradient-to-l from-[color:var(--gradient-from)] to-[color:var(--gradient-to)] backdrop-blur-sm border border-[color:var(--primary)]/30 rounded-2xl p-6"
             >
               <h3 className="text-2xl font-bold text-[color:var(--primary)] mb-6 font-serif flex items-center">
                 🧙‍♂️ Learnings
               </h3>
-              <div className="grid grid-cols-2 gap-4">
+              <motion.div
+                className="grid grid-cols-2 gap-4"
+                variants={containerVariants}
+              >
                 {learnings.map((learning, index) => (
                   <motion.div
                     key={index}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={
-                      isInView
-                        ? { opacity: 1, scale: 1 }
-                        : { opacity: 0, scale: 0.8 }
-                    }
+                    variants={itemVariants}
                     transition={{ delay: 0.6 + index * 0.1 }}
                     className="bg-black/40 border border-[color:var(--secondary)]/20 rounded-lg p-3 text-center"
                     whileHover={{
                       scale: 1.05,
                       borderColor: "var(--secondary)",
+                      transition: { duration: 0.2 },
                     }}
                   >
                     <span className="text-[color:var(--light)] font-sans text-sm">
@@ -314,34 +369,34 @@ export default function EventSection({
                     </span>
                   </motion.div>
                 ))}
-              </div>
+              </motion.div>
             </motion.div>
 
             {/* Images */}
             <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
-              transition={{ duration: 1, delay: 0.8 }}
+              initial="hidden"
+              animate={isInView ? "visible" : "hidden"}
+              variants={slideInRight}
+              transition={{ delay: 0.8 }}
               className="bg-gradient-to-l from-[color:var(--gradient-from)] to-[color:var(--gradient-to)] backdrop-blur-sm border border-[color:var(--primary)]/30 rounded-2xl p-6"
             >
               <h3 className="text-2xl font-bold text-[color:var(--primary)] mb-6 font-serif flex items-center">
                 📸 Captured Memories
               </h3>
-              <div className="grid grid-cols-2 gap-4">
+              <motion.div
+                className="grid grid-cols-2 gap-4"
+                variants={containerVariants}
+              >
                 {images.map((image, index) => (
                   <motion.div
                     key={index}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={
-                      isInView
-                        ? { opacity: 1, scale: 1 }
-                        : { opacity: 0, scale: 0.8 }
-                    }
+                    variants={itemVariants}
                     transition={{ delay: 1 + index * 0.1 }}
                     className="relative aspect-square rounded-lg overflow-hidden border-2 border-[color:var(--secondary)]/30 cursor-pointer"
                     whileHover={{
                       scale: 1.05,
                       borderColor: "var(--secondary)",
+                      transition: { duration: 0.2 },
                     }}
                     onClick={() => setSelectedImage(image)}
                   >
@@ -350,13 +405,19 @@ export default function EventSection({
                       alt={`Event memory ${index + 1}`}
                       fill
                       className="object-cover"
+                      priority={index < 2} // Prioritize loading first 2 images
                     />
-                    <motion.div className="absolute inset-0 bg-[color:var(--primary)]/20 opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <motion.div
+                      className="absolute inset-0 bg-[color:var(--primary)]/20 opacity-0 hover:opacity-100 flex items-center justify-center"
+                      initial={{ opacity: 0 }}
+                      whileHover={{ opacity: 1 }}
+                      transition={{ duration: 0.2 }}
+                    >
                       <span className="text-white font-bold">View</span>
                     </motion.div>
                   </motion.div>
                 ))}
-              </div>
+              </motion.div>
             </motion.div>
           </div>
         </div>
@@ -368,27 +429,33 @@ export default function EventSection({
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
+          transition={{ duration: 0.3, ease: "easeInOut" }}
           className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
           onClick={() => setSelectedImage(null)}
         >
           <motion.div
-            initial={{ scale: 0.8 }}
+            initial={{ scale: 0.9 }}
             animate={{ scale: 1 }}
-            exit={{ scale: 0.8 }}
+            exit={{ scale: 0.9 }}
+            transition={{ type: "spring", damping: 25, stiffness: 100 }}
             className="relative max-w-4xl max-h-[80vh] w-full h-full"
+            onClick={(e) => e.stopPropagation()}
           >
             <Image
               src={selectedImage || "/placeholder.svg"}
               alt="Enlarged memory"
               fill
               className="object-contain rounded-lg"
+              priority
             />
-            <button
+            <motion.button
               onClick={() => setSelectedImage(null)}
               className="absolute top-4 right-4 bg-[color:var(--primary)] text-black px-4 py-2 rounded-lg font-bold"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
             >
               ✕
-            </button>
+            </motion.button>
           </motion.div>
         </motion.div>
       )}
