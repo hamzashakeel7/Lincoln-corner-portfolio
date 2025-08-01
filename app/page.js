@@ -342,31 +342,6 @@ export default function Home() {
 
             <section id="event9" className="min-h-screen w-full">
               <EventSection
-                eventName="Art That Inspires"
-                eventDate="July 29, 2025"
-                responsibilities={{
-                  pre: [
-                    "Attendance management",
-                    "Multimedia setup",
-                    "Created WhatsApp group for participants",
-                  ],
-                  during: ["Captured photographs", "Captured videos"],
-                  post: ["Organized photos", "cleaned painting mess"],
-                }}
-                description="An art exhibition showcasing local students and their inspiring works. The event included live painting sessions, artist talks, and interactive art installations."
-                learnings={["Learned to manage art events", "learned painting"]}
-                images={[
-                  "/chap1/event8/1.jpg",
-                  "/chap1/event8/2.jpg",
-                  "/chap1/event8/3.jpg",
-                  "/chap1/event8/4.jpg",
-                ]}
-                sectionColor="hotPurple"
-              />
-            </section>
-
-            <section id="event10" className="min-h-screen w-full">
-              <EventSection
                 eventName="Benjamin Franklin"
                 eventDate="July 31, 2025"
                 responsibilities={{
