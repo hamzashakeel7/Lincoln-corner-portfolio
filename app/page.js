@@ -120,6 +120,7 @@ export default function Home() {
               />
             </section>
 
+            {/* event sections start */}
             <section id="event2" className="min-h-screen w-full">
               <EventSection
                 eventName="How to make a Business Plan"
@@ -286,6 +287,110 @@ export default function Home() {
                   "/chap1/event6/4.jpg",
                 ]}
                 sectionColor="lime"
+              />
+            </section>
+
+            <section id="event7" className="min-h-screen w-full">
+              <EventSection
+                eventName="Digital Marketing Workshop"
+                eventDate="July 30, 2025"
+                responsibilities={{
+                  pre: ["Sadly absent 😔"],
+                  during: [
+                    "Focs Captured meeting photographs",
+                    "Focs Captured meeting videos",
+                    "Focs Distributed souvenirs to participants",
+                  ],
+                  post: ["sadly absent 😔"],
+                }}
+                description="A workshop focused on digital marketing strategies and techniques. Participants learned about social media marketing, content creation, and online advertising."
+                learnings={["Learned to make useful souvenirs"]}
+                images={[
+                  "/chap1/event7/1.jpg",
+                  "/chap1/event7/2.jpg",
+                  "/chap1/event7/3.jpg",
+                  "/chap1/event7/4.jpg",
+                ]}
+                sectionColor="neonPink"
+              />
+            </section>
+
+            <section id="event8" className="min-h-screen w-full">
+              <EventSection
+                eventName="Art That Inspires"
+                eventDate="July 29, 2025"
+                responsibilities={{
+                  pre: [
+                    "Attendance management",
+                    "Multimedia setup",
+                    "Created WhatsApp group for participants",
+                  ],
+                  during: ["Captured photographs", "Captured videos"],
+                  post: ["Organized photos", "cleaned painting mess"],
+                }}
+                description="An art exhibition showcasing local students and their inspiring works. The event included live painting sessions, artist talks, and interactive art installations."
+                learnings={["Learned to manage art events", "learned painting"]}
+                images={[
+                  "/chap1/event8/1.jpg",
+                  "/chap1/event8/2.jpg",
+                  "/chap1/event8/3.jpg",
+                  "/chap1/event8/4.jpg",
+                ]}
+                sectionColor="hotPurple"
+              />
+            </section>
+
+            <section id="event9" className="min-h-screen w-full">
+              <EventSection
+                eventName="Art That Inspires"
+                eventDate="July 29, 2025"
+                responsibilities={{
+                  pre: [
+                    "Attendance management",
+                    "Multimedia setup",
+                    "Created WhatsApp group for participants",
+                  ],
+                  during: ["Captured photographs", "Captured videos"],
+                  post: ["Organized photos", "cleaned painting mess"],
+                }}
+                description="An art exhibition showcasing local students and their inspiring works. The event included live painting sessions, artist talks, and interactive art installations."
+                learnings={["Learned to manage art events", "learned painting"]}
+                images={[
+                  "/chap1/event8/1.jpg",
+                  "/chap1/event8/2.jpg",
+                  "/chap1/event8/3.jpg",
+                  "/chap1/event8/4.jpg",
+                ]}
+                sectionColor="hotPurple"
+              />
+            </section>
+
+            <section id="event10" className="min-h-screen w-full">
+              <EventSection
+                eventName="Benjamin Franklin"
+                eventDate="July 31, 2025"
+                responsibilities={{
+                  pre: [
+                    "Attendance management",
+                    "Multimedia setup",
+                    "mobiles setup for kahoot",
+                  ],
+                  during: [
+                    "Captured photographs",
+                    "Captured videos",
+                    "assisted participants in kahoot",
+                  ],
+                  post: ["Organized photos", "phones setup"],
+                }}
+                description="A special event celebrating the legacy of Benjamin Franklin, featuring interactive sessions, discussions, and activities related to his contributions to science and society."
+                learnings={["Learned about benjamin franklin"]}
+                images={[
+                  "/chap1/event9/1.jpg",
+                  "/chap1/event9/2.jpg",
+                  "/chap1/event9/3.jpg",
+                  "/chap1/event9/4.jpg",
+                ]}
+                sectionColor="aquaVelvet"
               />
             </section>
           </div>
