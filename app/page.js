@@ -11,6 +11,8 @@ import { useSimpleScroll } from "@/hooks/use-hook-scroll";
 import MovingStars from "@/components/MovingStars";
 import WelcomeSound from "@/components/WelcomeSound";
 import LandingPage from "@/components/LandingPage";
+import ChapterTransition from "@/components/ChapterTransition";
+import Chapter2Page from "@/components/chap2/Chapter2";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
@@ -20,6 +22,8 @@ export default function Home() {
   const [currentSection, setCurrentSection] = useState(0);
   const { containerRef } = useSimpleScroll(setCurrentSection);
   const [showLanding, setShowLanding] = useState(false);
+  const [showChapter2Transition, setShowChapter2Transition] = useState(false);
+  const [showChapter2, setShowChapter2] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -27,7 +31,30 @@ export default function Home() {
       setShowLanding(true);
     }, 6000);
 
-    return () => clearTimeout(timer);
+    const handleChapter2Navigation = () => {
+      setShowMain(false);
+      setShowChapter2Transition(true);
+    };
+
+    const handleChapter1Navigation = () => {
+      setShowChapter2(false);
+      setShowMain(true);
+    };
+
+    window.addEventListener("navigateToChapter2", handleChapter2Navigation);
+    window.addEventListener("navigateToChapter1", handleChapter1Navigation);
+
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener(
+        "navigateToChapter2",
+        handleChapter2Navigation
+      );
+      window.removeEventListener(
+        "navigateToChapter1",
+        handleChapter1Navigation
+      );
+    };
   }, []);
 
   const handleViewWork = () => {
@@ -39,6 +66,11 @@ export default function Home() {
     setShowIntro(false);
     setShowMain(true);
     setPlayWelcomeSound(true);
+  };
+
+  const handleChapter2TransitionComplete = () => {
+    setShowChapter2Transition(false);
+    setShowChapter2(true);
   };
 
   const sections = [
@@ -74,6 +106,15 @@ export default function Home() {
         )}
         {showIntro && (
           <IntroSequence key="intro" onComplete={handleIntroComplete} />
+        )}
+        {showChapter2Transition && (
+          <ChapterTransition
+            key="chapter2-transition"
+            chapterNumber={2}
+            month="August"
+            title="Building Bridges"
+            onComplete={handleChapter2TransitionComplete}
+          />
         )}
       </AnimatePresence>
 
@@ -289,6 +330,13 @@ export default function Home() {
               />
             </section>
           </div>
+        </>
+      )}
+
+      {showChapter2 && (
+        <>
+          <Navbar currentSection={1} sections={sections} isChapter2={true} />
+          <Chapter2Page />
         </>
       )}
     </div>

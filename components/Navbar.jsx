@@ -3,10 +3,27 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 
-export default function Navbar({ currentSection, sections }) {
+export default function Navbar({
+  currentSection,
+  sections,
+  isChapter2 = false,
+}) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const scrollToSection = (index) => {
+    if (isChapter2 && index === 0) {
+      // Navigate back to Chapter 1 from Chapter 2
+      window.dispatchEvent(new CustomEvent("navigateToChapter1"));
+      setIsMenuOpen(false);
+      return;
+    }
+
+    if (!isChapter2 && index === 1) {
+      window.dispatchEvent(new CustomEvent("navigateToChapter2"));
+      setIsMenuOpen(false);
+      return;
+    }
+
     const element = document.getElementById(sections[index].id);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
@@ -22,6 +39,8 @@ export default function Navbar({ currentSection, sections }) {
     { number: 5, title: "Community Impact", month: "November" },
     { number: 6, title: "Legacy & Reflection", month: "December" },
   ];
+
+  const displayCurrentSection = isChapter2 ? 1 : currentSection;
 
   return (
     <>
@@ -48,7 +67,8 @@ export default function Navbar({ currentSection, sections }) {
               transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
             >
               <span className="text-orange-300 font-sans text-sm">
-                Chapter {currentSection + 1}: {chapters[currentSection]?.title}
+                Chapter {displayCurrentSection + 1}:{" "}
+                {chapters[displayCurrentSection]?.title}
               </span>
             </motion.div>
 
@@ -60,7 +80,7 @@ export default function Navbar({ currentSection, sections }) {
                 whileHover={{ scale: 1.05 }}
               >
                 <span className="text-orange-400 font-bold font-sans text-sm">
-                  Ch. {currentSection + 1}
+                  Ch. {displayCurrentSection + 1}
                 </span>
               </motion.div>
 
@@ -114,12 +134,12 @@ export default function Navbar({ currentSection, sections }) {
 
               {/* Chapter List */}
               <div className="space-y-4">
-                {chapters.slice(0, 1).map((chapter, index) => (
+                {chapters.slice(0, 2).map((chapter, index) => (
                   <motion.button
                     key={chapter.number}
                     onClick={() => scrollToSection(index)}
                     className={`w-full text-left p-4 rounded-lg border transition-all duration-300 ${
-                      currentSection === index
+                      displayCurrentSection === index
                         ? "bg-gradient-to-r from-orange-500/20 to-amber-500/20 border-orange-400/50"
                         : "bg-gradient-to-r from-orange-500/10 to-amber-500/10 border-orange-400/20 hover:border-orange-400/40"
                     }`}
@@ -147,7 +167,7 @@ export default function Navbar({ currentSection, sections }) {
                   <p className="text-orange-300 font-sans text-sm mb-4">
                     Coming Soon:
                   </p>
-                  {chapters.slice(1).map((chapter, index) => (
+                  {chapters.slice(2).map((chapter, index) => (
                     <motion.div
                       key={chapter.number}
                       className="w-full text-left p-4 rounded-lg bg-gradient-to-r from-gray-600/10 to-gray-500/10 border border-gray-400/20 mb-2 opacity-60"
