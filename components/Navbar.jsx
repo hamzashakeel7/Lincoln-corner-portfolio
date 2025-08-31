@@ -107,16 +107,23 @@ export default function Navbar({
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
               className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50"
               onClick={() => setIsMenuOpen(false)}
             />
 
             {/* Menu Panel */}
             <motion.div
-              initial={{ opacity: 0, x: 300 }}
+              initial={{ opacity: 0, x: "100%" }}
               animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: 300 }}
-              transition={{ type: "spring", damping: 25, stiffness: 200 }}
+              exit={{ opacity: 0, x: "100%" }}
+              transition={{
+                type: "spring",
+                damping: 20,
+                stiffness: 300,
+                mass: 0.5,
+                bounce: 0.2,
+              }}
               className="fixed top-0 right-0 h-full w-80 bg-black/90 backdrop-blur-md border-l border-orange-500/20 z-50 p-6"
             >
               {/* Menu Header */}
@@ -146,7 +153,12 @@ export default function Navbar({
                     whileHover={{ scale: 1.02, x: 5 }}
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.1 }}
+                    transition={{
+                      delay: index * 0.1,
+                      type: "spring",
+                      stiffness: 200,
+                      damping: 15,
+                    }}
                   >
                     <div className="flex items-center justify-between mb-2">
                       <span className="text-orange-400 font-bold font-serif">
@@ -173,7 +185,12 @@ export default function Navbar({
                       className="w-full text-left p-4 rounded-lg bg-gradient-to-r from-gray-600/10 to-gray-500/10 border border-gray-400/20 mb-2 opacity-60"
                       initial={{ opacity: 0, x: 20 }}
                       animate={{ opacity: 0.6, x: 0 }}
-                      transition={{ delay: (index + 3) * 0.1 }}
+                      transition={{
+                        delay: (index + 3) * 0.1,
+                        type: "spring",
+                        stiffness: 200,
+                        damping: 15,
+                      }}
                     >
                       <div className="flex items-center justify-between mb-2">
                         <span className="text-gray-400 font-bold font-serif">

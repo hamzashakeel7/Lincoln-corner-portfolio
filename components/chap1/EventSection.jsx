@@ -116,6 +116,96 @@ const colorStyles = {
     "--gradient-to": "rgba(163, 230, 53, 0.2)",
     "--950": "rgba(26, 46, 5, 0.2)",
   },
+  electric: {
+    "--primary": "#00f0ff", // Electric blue
+    "--secondary": "#00c6ff",
+    "--light": "#80e8ff",
+    "--bg": "rgba(0, 240, 255, 0.2)",
+    "--gradient-from": "rgba(0, 180, 255, 0.2)",
+    "--gradient-to": "rgba(100, 255, 218, 0.2)",
+    "--950": "rgba(0, 40, 85, 0.2)",
+  },
+  neonPink: {
+    "--primary": "#ff00aa", // Neon pink
+    "--secondary": "#ff44cc",
+    "--light": "#ff88dd",
+    "--bg": "rgba(255, 0, 170, 0.2)",
+    "--gradient-from": "rgba(200, 0, 150, 0.2)",
+    "--gradient-to": "rgba(255, 80, 180, 0.2)",
+    "--950": "rgba(60, 0, 40, 0.2)",
+  },
+  laserLemon: {
+    "--primary": "#ffff00", // Bright yellow
+    "--secondary": "#ffff66",
+    "--light": "#ffff99",
+    "--bg": "rgba(255, 255, 0, 0.2)",
+    "--gradient-from": "rgba(220, 220, 0, 0.2)",
+    "--gradient-to": "rgba(255, 200, 0, 0.2)",
+    "--950": "rgba(70, 70, 0, 0.2)",
+  },
+  poisonGreen: {
+    "--primary": "#00ff88", // Toxic green
+    "--secondary": "#44ffaa",
+    "--light": "#88ffcc",
+    "--bg": "rgba(0, 255, 136, 0.2)",
+    "--gradient-from": "rgba(0, 200, 100, 0.2)",
+    "--gradient-to": "rgba(100, 255, 150, 0.2)",
+    "--950": "rgba(0, 50, 30, 0.2)",
+  },
+  hotPurple: {
+    "--primary": "#cc00ff", // Vivid purple
+    "--secondary": "#dd44ff",
+    "--light": "#ee88ff",
+    "--bg": "rgba(204, 0, 255, 0.2)",
+    "--gradient-from": "rgba(160, 0, 200, 0.2)",
+    "--gradient-to": "rgba(230, 80, 255, 0.2)",
+    "--950": "rgba(40, 0, 60, 0.2)",
+  },
+  fireOrange: {
+    "--primary": "#ff5500", // Burning orange
+    "--secondary": "#ff8844",
+    "--light": "#ffbb88",
+    "--bg": "rgba(255, 85, 0, 0.2)",
+    "--gradient-from": "rgba(220, 60, 0, 0.2)",
+    "--gradient-to": "rgba(255, 140, 0, 0.2)",
+    "--950": "rgba(70, 20, 0, 0.2)",
+  },
+  aquaVelvet: {
+    "--primary": "#00ffcc", // Aqua teal
+    "--secondary": "#44ffdd",
+    "--light": "#88ffee",
+    "--bg": "rgba(0, 255, 204, 0.2)",
+    "--gradient-from": "rgba(0, 200, 180, 0.2)",
+    "--gradient-to": "rgba(100, 255, 220, 0.2)",
+    "--950": "rgba(0, 50, 50, 0.2)",
+  },
+  rubyRed: {
+    "--primary": "#ff0055", // Deep red
+    "--secondary": "#ff4477",
+    "--light": "#ff88aa",
+    "--bg": "rgba(255, 0, 85, 0.2)",
+    "--gradient-from": "rgba(200, 0, 60, 0.2)",
+    "--gradient-to": "rgba(255, 80, 120, 0.2)",
+    "--950": "rgba(60, 0, 20, 0.2)",
+  },
+  cyberLime: {
+    "--primary": "#aaff00", // Cyber lime
+    "--secondary": "#ccff44",
+    "--light": "#ddff88",
+    "--bg": "rgba(170, 255, 0, 0.2)",
+    "--gradient-from": "rgba(140, 220, 0, 0.2)",
+    "--gradient-to": "rgba(200, 255, 80, 0.2)",
+    "--950": "rgba(40, 60, 0, 0.2)",
+  },
+  royalAmethyst: {
+    "--primary": "#aa00ff", // Deep purple
+    "--secondary": "#bb44ff",
+    "--light": "#cc88ff",
+    "--bg": "rgba(170, 0, 255, 0.2)",
+    "--gradient-from": "rgba(130, 0, 200, 0.2)",
+    "--gradient-to": "rgba(200, 80, 255, 0.2)",
+    "--950": "rgba(30, 0, 60, 0.2)",
+  },
 };
 
 // Animation variants for better performance

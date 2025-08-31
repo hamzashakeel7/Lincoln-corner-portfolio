@@ -120,7 +120,7 @@ export default function LandingPage({ onViewWork }) {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.6 }}
-              className="bg-gradient-to-br from-orange-600/20 to-amber-600/20 backdrop-blur-sm border border-orange-400/30 rounded-xl p-6 text-center w-full md:w-[20vw] ml-0 md:ml-20"
+              className="bg-gradient-to-br from-orange-600/20 to-amber-600/20 backdrop-blur-sm border border-orange-400/30 rounded-xl p-6 text-center w-full md:w-[30vw] ml-0 md:ml-20"
             >
               <div className="relative rounded-xl overflow-hidden bg-black">
                 <iframe
