@@ -25,7 +25,16 @@ export default function LandingPage({ onViewWork }) {
       number: 2,
       title: "Building Bridges",
       month: "August 2025",
-      events: ["comming soon"],
+      events: [
+        "Documentary Filmmaking Course",
+        "MUN Training Session",
+        "Women Innovators | US Consulate",
+        "Graphics Design (Featuring CANVA, Portfolio Building & Freelancing)",
+        "American Sports: Cricket vs Baseball",
+        "A Day in the Life of a Diplomat",
+        "How Diplomats Solve Global Problems",
+        "English Through Cinema - ARGO",
+      ],
     },
     {
       number: 3,
