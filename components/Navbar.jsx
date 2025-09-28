@@ -7,18 +7,40 @@ export default function Navbar({
   currentSection,
   sections,
   isChapter2 = false,
+  isChapter3 = false,
 }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const scrollToSection = (index) => {
-    if (isChapter2 && index === 0) {
-      // Navigate back to Chapter 1 from Chapter 2
+    if ((isChapter2 || isChapter3) && index === 0) {
+      // Navigate back to Chapter 1 from Chapter 2 or 3
       window.dispatchEvent(new CustomEvent("navigateToChapter1"));
       setIsMenuOpen(false);
       return;
     }
 
-    if (!isChapter2 && index === 1) {
+    if (!isChapter2 && !isChapter3 && index === 1) {
+      window.dispatchEvent(new CustomEvent("navigateToChapter2"));
+      setIsMenuOpen(false);
+      return;
+    }
+
+    if (!isChapter3 && index === 2) {
+      // Navigate to Chapter 3
+      window.dispatchEvent(new CustomEvent("navigateToChapter3"));
+      setIsMenuOpen(false);
+      return;
+    }
+
+    if (isChapter2 && index === 2) {
+      // Navigate from Chapter 2 to Chapter 3
+      window.dispatchEvent(new CustomEvent("navigateToChapter3"));
+      setIsMenuOpen(false);
+      return;
+    }
+
+    if (isChapter3 && index === 1) {
+      // Navigate from Chapter 3 to Chapter 2
       window.dispatchEvent(new CustomEvent("navigateToChapter2"));
       setIsMenuOpen(false);
       return;
@@ -40,7 +62,11 @@ export default function Navbar({
     { number: 6, title: "Legacy & Reflection", month: "December" },
   ];
 
-  const displayCurrentSection = isChapter2 ? 1 : currentSection;
+  const displayCurrentSection = isChapter3
+    ? 2
+    : isChapter2
+    ? 1
+    : currentSection;
 
   return (
     <>
@@ -141,7 +167,7 @@ export default function Navbar({
 
               {/* Chapter List */}
               <div className="space-y-4">
-                {chapters.slice(0, 2).map((chapter, index) => (
+                {chapters.slice(0, 3).map((chapter, index) => (
                   <motion.button
                     key={chapter.number}
                     onClick={() => scrollToSection(index)}
@@ -179,7 +205,7 @@ export default function Navbar({
                   <p className="text-orange-300 font-sans text-sm mb-4">
                     Coming Soon:
                   </p>
-                  {chapters.slice(2).map((chapter, index) => (
+                  {chapters.slice(3).map((chapter, index) => (
                     <motion.div
                       key={chapter.number}
                       className="w-full text-left p-4 rounded-lg bg-gradient-to-r from-gray-600/10 to-gray-500/10 border border-gray-400/20 mb-2 opacity-60"

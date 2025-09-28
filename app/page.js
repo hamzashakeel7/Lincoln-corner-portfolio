@@ -13,6 +13,7 @@ import WelcomeSound from "@/components/WelcomeSound";
 import LandingPage from "@/components/LandingPage";
 import ChapterTransition from "@/components/ChapterTransition";
 import Chapter2Page from "@/components/chap2/Chapter2";
+import Chapter3Page from "@/components/chap3/Chapter3";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
@@ -24,6 +25,8 @@ export default function Home() {
   const [showLanding, setShowLanding] = useState(false);
   const [showChapter2Transition, setShowChapter2Transition] = useState(false);
   const [showChapter2, setShowChapter2] = useState(false);
+  const [showChapter3Transition, setShowChapter3Transition] = useState(false);
+  const [showChapter3, setShowChapter3] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -33,19 +36,33 @@ export default function Home() {
 
     const handleChapter2Navigation = () => {
       setShowMain(false);
+      setShowChapter3(false);
       setShowChapter2Transition(true);
+    };
+
+    const handleChapter3Navigation = () => {
+      setShowMain(false);
+      setShowChapter2(false);
+      setShowChapter3Transition(true);
     };
 
     const handleChapter1Navigation = () => {
       setShowChapter2(false);
+      setShowChapter3(false);
       setShowMain(true);
     };
 
+    window.addEventListener("navigateToChapter3", handleChapter3Navigation);
     window.addEventListener("navigateToChapter2", handleChapter2Navigation);
     window.addEventListener("navigateToChapter1", handleChapter1Navigation);
 
     return () => {
       clearTimeout(timer);
+
+      window.removeEventListener(
+        "navigateToChapter3",
+        handleChapter3Navigation
+      );
       window.removeEventListener(
         "navigateToChapter2",
         handleChapter2Navigation
@@ -71,6 +88,11 @@ export default function Home() {
   const handleChapter2TransitionComplete = () => {
     setShowChapter2Transition(false);
     setShowChapter2(true);
+  };
+
+  const handleChapter3TransitionComplete = () => {
+    setShowChapter3Transition(false);
+    setShowChapter3(true);
   };
 
   const sections = [
@@ -114,6 +136,15 @@ export default function Home() {
             month="August"
             title="Building Bridges"
             onComplete={handleChapter2TransitionComplete}
+          />
+        )}
+        {showChapter3Transition && (
+          <ChapterTransition
+            key="chapter3-transition"
+            chapterNumber={3}
+            month="September"
+            title="Creative Expressions"
+            onComplete={handleChapter3TransitionComplete}
           />
         )}
       </AnimatePresence>
@@ -417,6 +448,13 @@ export default function Home() {
         <>
           <Navbar currentSection={1} sections={sections} isChapter2={true} />
           <Chapter2Page />
+        </>
+      )}
+
+      {showChapter3 && (
+        <>
+          <Navbar currentSection={2} sections={sections} isChapter3={true} />
+          <Chapter3Page />
         </>
       )}
     </div>
