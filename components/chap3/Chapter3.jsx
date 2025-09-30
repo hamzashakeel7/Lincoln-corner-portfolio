@@ -73,89 +73,170 @@ export default function Chapter3Page() {
         "/chap3/event2/3.jpg",
       ],
     },
+    {
+      name: "How Diplomats Solve Global Problems",
+      date: "September 18, 2025",
+      color: "emerald",
+      responsibilities: {
+        pre: [
+          "Connected multi-media equipments",
+          "Managed seating arrangements",
+          "Charged camera batteries",
+        ],
+        during: ["Event photographs", "Asked questions to the speaker"],
+        post: ["Wrapped up the event", "Everything kept in place"],
+      },
+      description:
+        "Assisted in organizing the 'How Diplomats Solve Global Problems' workshop. Helped setup multimedia, seating arrangements and camera equipment, asked questions to the speaker, and ensured a smooth flow of workshop",
+      learnings: ["Networking", "Photography skills", "Diplomacy insights"],
+      images: [
+        "/chap3/event3/1.jpg",
+        "/chap3/event3/2.jpg",
+        "/chap3/event3/4.jpg",
+        "/chap3/event3/3.jpg",
+      ],
+    },
+    {
+      name: "Write It Right: Workshop on Composition and Writing Skills",
+      date: "September 19, 2025",
+      color: "emerald",
+      responsibilities: {
+        pre: ["Sadly absent 😌"],
+        during: ["Sadly absent 😌"],
+        post: ["Sadly absent 😌"],
+      },
+      description:
+        "This dynamic session provided practical strategies to strengthen your professional communication. We focused on mastering clear, concise composition, structuring effective emails and reports, and refining overall writing clarity. Participants left with actionable tips to make every word count.",
+      learnings: ["Sadly absent 😌"],
+      images: [
+        "/chap3/event4/1.jpg",
+        "/chap3/event4/2.jpg",
+        "/chap3/event4/4.jpg",
+        "/chap3/event4/3.jpg",
+      ],
+    },
+    {
+      name: "Office Power – PowerPoint & Word Edition (Digital Skills Training for Youth & Early-Career Professionals)",
+      date: "September 22, 2025",
+      color: "emerald",
+      responsibilities: {
+        pre: [
+          "Charged Batteries",
+          "Connected multi-media equipments",
+          "Managed seating arrangements",
+        ],
+        during: ["Event photographs", "Took attendance"],
+        post: ["Wrapped up the event", "Everything kept in place"],
+      },
+      description:
+        "This hands-on workshop equipped participants with essential skills in Microsoft PowerPoint and Word. We covered creating impactful presentations, designing professional documents, and utilizing advanced features to enhance productivity. Attendees gained practical knowledge to excel in academic and professional settings.",
+      learnings: [
+        "Presentation skills",
+        "Document design",
+        "Productivity tools",
+        "Collaboration techniques",
+        "use of AI in workplace",
+      ],
+      images: [
+        "/chap3/event5/1.jpg",
+        "/chap3/event5/2.jpg",
+        "/chap3/event5/4.jpg",
+        "/chap3/event5/3.jpg",
+      ],
+    },
+    {
+      name: "Creative Rhythms: Building Confidence and Collaboration through Music",
+      date: "September 24, 2025",
+      color: "emerald",
+      responsibilities: {
+        pre: [
+          "Charged Batteries",
+          "Connected multi-media equipments",
+          "Stiker cutting",
+        ],
+        during: ["wasn't able to attend at that time 😌"],
+        post: ["wasn't able to attend at that time 😌"],
+      },
+      description:
+        "This interactive workshop used music as a tool to foster confidence and teamwork. Participants engaged in rhythm exercises, collaborative songwriting, and group performances, enhancing their communication",
+      learnings: [
+        "Sticker cutting and designing",
+        "Different types of musical instruments",
+      ],
+      images: [
+        "/chap3/event8/1.jpg",
+        "/chap3/event8/2.jpg",
+        "/chap3/event8/4.jpg",
+        "/chap3/event8/3.jpg",
+      ],
+    },
+    {
+      name: "Introduction to Project Management",
+      date: "September 26, 2025",
+      color: "emerald",
+      responsibilities: {
+        pre: [
+          "Charged Batteries",
+          "Connected multi-media equipments",
+          "Made souvenirs",
+        ],
+        during: ["Captured event photographs", "Took attendance"],
+        post: ["wasn't avaliabel at that time 😌"],
+      },
+      description:
+        "This workshop introduced fundamental project management concepts and techniques. Participants learned about project planning, task delegation, timeline management, and risk assessment through interactive activities and real-world scenarios.",
+      learnings: [
+        "Souvenir making",
+        "Project planning",
+        "Task delegation",
+        "Timeline management",
+      ],
+      images: [
+        "/chap3/event9/1.jpg",
+        "/chap3/event9/2.jpg",
+        "/chap3/event9/4.jpg",
+        "/chap3/event9/3.jpg",
+      ],
+    },
   ];
 
   const thirdPartyEvents = [
     {
-      name: "International Arts Festival",
-      date: "September 15, 2025",
+      name: "EducationUSA - Advisory Hours",
+      date: "September 4, 2025",
       color: "amber",
       responsibilities: {
-        pre: [
-          "Registered PACC pavilion",
-          "Prepared cultural presentation",
-          "Coordinated with festival organizers",
-          "Designed interactive displays",
-        ],
-        during: [
-          "Represented Pakistani culture",
-          "Engaged with international visitors",
-          "Participated in cultural exchange",
-          "Networked with global artists",
-        ],
-        post: [
-          "Shared festival insights",
-          "Established artist connections",
-          "Created impact assessment",
-          "Planned future collaborations",
-        ],
+        pre: ["Seating arrangements", "Charged camera batteries"],
+        during: ["Event photographs"],
+        post: ["Wrapped up the event"],
       },
       description:
-        "Represented PACC at a major international arts festival featuring 40+ countries. Showcased Pakistani cultural heritage through interactive displays, live demonstrations, and cultural performances, reaching over 10,000 international visitors.",
-      learnings: [
-        "International representation",
-        "Cultural diplomacy",
-        "Festival management",
-        "Cross-cultural engagement",
-        "Public presentation",
-        "Global networking",
-      ],
+        "A bootcamp session organized by EducationUSA, focusing on college and career counseling. The event included workshops, guest speakers, and interactive sessions to guide students in their educational journeys.",
+      learnings: ["College application strategies"],
       images: [
-        "/placeholder.svg?height=300&width=400&text=Arts+Festival",
-        "/placeholder.svg?height=300&width=400&text=Cultural+Pavilion",
-        "/placeholder.svg?height=300&width=400&text=International+Crowd",
-        "/placeholder.svg?height=300&width=400&text=Cultural+Performance",
+        "/chap3/event6/1.jpg",
+        "/chap3/event6/2.jpg",
+        "/chap3/event6/3.jpg",
+        "/chap3/event6/4.jpg",
       ],
     },
     {
-      name: "Creative Writing Symposium",
-      date: "September 29, 2025",
-      color: "yellow",
+      name: "Awareness Session - Urban Flooding",
+      date: "September 23, 2025",
+      color: "amber",
       responsibilities: {
-        pre: [
-          "Submitted writing samples",
-          "Researched symposium themes",
-          "Prepared presentation materials",
-          "Connected with fellow writers",
-        ],
-        during: [
-          "Participated in writing workshops",
-          "Shared cultural narratives",
-          "Attended panel discussions",
-          "Collaborated on group projects",
-        ],
-        post: [
-          "Compiled writing portfolio",
-          "Maintained writer connections",
-          "Applied learned techniques",
-          "Planned writing initiatives",
-        ],
+        pre: ["Wasn't able to attend 😌"],
+        during: ["Wasn't able to attend 😌"],
+        post: ["Wasn't able to attend 😌"],
       },
       description:
-        "Participated in a prestigious creative writing symposium focused on multicultural storytelling. Collaborated with writers from diverse backgrounds to explore themes of identity, migration, and cultural fusion through various literary forms.",
-      learnings: [
-        "Creative writing techniques",
-        "Multicultural storytelling",
-        "Literary collaboration",
-        "Narrative development",
-        "Publishing insights",
-        "Writer networking",
-      ],
+        "An awareness session on urban flooding, discussing its causes, impacts, and mitigation strategies. The event featured expert speakers and interactive discussions to educate attendees on the importance of sustainable urban planning.",
+      learnings: ["Wasn't able to attend 😌"],
       images: [
-        "/placeholder.svg?height=300&width=400&text=Writing+Symposium",
-        "/placeholder.svg?height=300&width=400&text=Workshop+Session",
-        "/placeholder.svg?height=300&width=400&text=Panel+Discussion",
-        "/placeholder.svg?height=300&width=400&text=Writer+Collaboration",
+        "/chap3/event7/1.jpg",
+        "/chap3/event7/2.jpg",
+        "/chap3/event7/3.jpg",
+        "/chap3/event7/4.jpg",
       ],
     },
   ];
